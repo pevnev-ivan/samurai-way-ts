@@ -1,16 +1,17 @@
 .nav {
     grid-area: n;
-
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     background-color: white;
     padding: 15px;
 }
 
 .Item {
-    padding: 10px 30px;
     text-align: center;
     color: #4E5D78;
     font-weight: bold;
-    margin-bottom: 20px;
+
     background: white;
     border: 2px solid white;
     border-radius: 8px;
@@ -18,5 +19,15 @@
 
 .Item_active {
     background-color: #657389;
+    color: white;
+}
+
+a.active {
+
+    display: block;
+    border-radius: 8px;
+    padding: 0px 0px;
+    width: 200px;
+    background: #657389;
     color: white;
 }

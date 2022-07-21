@@ -1,10 +1,4 @@
-.content {
-    text-align: center;
-    grid-area: c;
-    border: 2px solid #F5F6F7;;
-    border-radius: 20px;
-    background-color: #F5F6F7;
-}
+
 
 .item {
     background-color: white;

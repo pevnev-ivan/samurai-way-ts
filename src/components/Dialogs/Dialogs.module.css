@@ -1,0 +1,22 @@
+.dialogs__container {
+    background: #F5F6F7;
+    border: 2px solid #F5F6F7;;
+    border-radius: 20px;
+    display: grid;
+
+    grid-template-columns: 2fr 10fr;
+    margin: 20px
+}
+
+.dialogs {
+
+}
+
+.dialogs_item {
+    padding: 10px;
+}
+
+.dialogs .dialogs_item {
+
+}
+
