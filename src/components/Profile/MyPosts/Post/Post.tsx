@@ -1,11 +1,8 @@
 import React from 'react';
 import s from "../../Profile.module.css";
+import {PostType} from "../../../../index";
 
-type PostType = {
-    message: string;
-    likesCount: number;
-    watchCount: number;
-}
+
 
 const Post = (props: PostType) => {
     return <div className={s.item}>

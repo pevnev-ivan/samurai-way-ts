@@ -1,13 +1,6 @@
 import React from 'react';
+import {MessagesDataType} from "../../../index";
 
-type MessagesDataType = {
-    messagesData: Array<MessageType>
-}
-
-type MessageType = {
-    id: number
-    message: string
-}
 
 const Message = (props: MessagesDataType) => {
 
