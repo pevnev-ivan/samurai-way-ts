@@ -1,12 +1,15 @@
 import React from 'react';
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import {StateType} from "../../index";
 
-const Profile = () => {
+
+const Profile = (props: StateType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts postData={props.state.postData}/>
+
         </div>)
 }
 

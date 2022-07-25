@@ -1,17 +1,11 @@
 import React from 'react';
 import s from "../Dialogs.module.css";
 import {NavLink} from "react-router-dom";
+import {DialogsDataType} from "../../../index";
 
-type DialogsData = {
-    dialogsArr: Array<DialogItemType>
-}
 
-type DialogItemType = {
-    id: number
-    name: string
-}
 
-const Dialog = (props: DialogsData) => {
+const Dialog = (props: DialogsDataType) => {
 
     let dialogElements = props.dialogsArr.map((ObjFromDialogs, index) => {
         return (
