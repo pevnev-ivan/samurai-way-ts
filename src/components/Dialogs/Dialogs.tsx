@@ -2,20 +2,20 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import {StateType} from "../../index";
+import {DialogsPageType} from "../../types/types";
 
 
 
 
-const Dialogs = (props: StateType) => {
+const Dialogs = (props: DialogsPageType) => {
     return (
         <div className={s.dialogs__container}>
             <div className={s.dialogs}>
-                <Dialog dialogsArr={props.state.dialogsData}/>
+                <Dialog dialogsArr={props.dialogsData}/>
             </div>
 
             <div className={s.messages}>
-                <Message messagesData={props.state.messagesData}/>
+                <Message messagesData={props.messagesData}/>
             </div>
         </div>
     );

@@ -1,10 +1,10 @@
 import React from 'react';
-import {MessagesDataType} from "../../../index";
+import {MessageDataType} from "../../../types/types";
 
 
-const Message = (props: MessagesDataType) => {
+const Message = (props: MessageDataType) => {
 
-    let messageElements = props.messagesData.map((ObjFromMessageData,index) => {
+    let messageElements = props.messagesData.map((ObjFromMessageData, index) => {
         return (
             <div key={index}>
                 {ObjFromMessageData.message}
@@ -12,10 +12,15 @@ const Message = (props: MessagesDataType) => {
         )
     })
 
-    return (
+    return ( <div>
         <div>
             {messageElements}
         </div>
-    )}
+
+            <textarea></textarea>
+            <button>Отправить</button>
+    </div>
+)
+}
 
 export default Message;

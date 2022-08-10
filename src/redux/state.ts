@@ -1,7 +1,11 @@
-let state = {
+import {renderTree} from "../render/render";
+import {GlobalStateType} from "../types/types";
+
+let state: GlobalStateType = {
 
     profilePage:
         {
+            newPostElement: '',
             postData:
                 [
                     {id: 1, message: 'Hi, it is test message', likesCount: 12, watchCount: 125},
@@ -11,7 +15,7 @@ let state = {
                 ]
         },
 
-    messagesPage:
+    dialogsPage:
         {
             dialogsData:
                 [
@@ -34,5 +38,23 @@ let state = {
         }
 }
 
+export const addPost = () => {
+
+    let newPost = {
+        id: 5,
+        message: state.profilePage.newPostElement,
+        likesCount: 0,
+        watchCount: 0
+    }
+
+    state.profilePage.postData.unshift(newPost)
+    state.profilePage.newPostElement = ''
+    renderTree(state)
+}
+
+export const UpdateNewPostText = (newElement: string) => {
+    state.profilePage.newPostElement = newElement
+    renderTree(state)
+}
 
 export default state

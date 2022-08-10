@@ -1,11 +1,11 @@
 import React from 'react';
 import s from "../Dialogs.module.css";
 import {NavLink} from "react-router-dom";
-import {DialogsDataType} from "../../../index";
+import {DialogDataType, DialogsPageType} from "../../../types/types";
 
 
 
-const Dialog = (props: DialogsDataType) => {
+const Dialog = (props: DialogDataType) => {
 
     let dialogElements = props.dialogsArr.map((ObjFromDialogs, index) => {
         return (

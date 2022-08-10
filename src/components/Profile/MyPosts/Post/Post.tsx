@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "../../Profile.module.css";
-import {PostType} from "../../../../index";
+import {PostType} from "../../../../types/types";
 
 
 
