@@ -1,4 +1,3 @@
-import {renderTree} from "../render/render";
 import {GlobalStateType} from "../types/types";
 
 let state: GlobalStateType = {
@@ -38,6 +37,10 @@ let state: GlobalStateType = {
         }
 }
 
+let reRenderTree = () => {
+
+}
+
 export const addPost = () => {
 
     let newPost = {
@@ -49,12 +52,15 @@ export const addPost = () => {
 
     state.profilePage.postData.unshift(newPost)
     state.profilePage.newPostElement = ''
-    renderTree(state)
+    reRenderTree()
 }
 
 export const UpdateNewPostText = (newElement: string) => {
     state.profilePage.newPostElement = newElement
-    renderTree(state)
+    reRenderTree()
 }
 
+export const subscribe = (observer: any) => {
+    reRenderTree = observer // observer pattern (similar to publisher-subscriber)
+}
 export default state
