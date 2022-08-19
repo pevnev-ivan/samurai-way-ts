@@ -13,6 +13,7 @@ import state, {addPost, UpdateNewPostText} from "./redux/state";
 
 function App() {
     return (
+        <>
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
@@ -27,6 +28,7 @@ function App() {
                 </div>
             </div>
         </BrowserRouter>
+        </>
     );
 }
 
