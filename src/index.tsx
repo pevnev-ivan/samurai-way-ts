@@ -1,17 +1,21 @@
 import React from 'react';
 import './index.css';
-import state, {subscribe} from "./redux/state";
-import {GlobalStateType} from "./types/types";
+import {store} from "./redux/state";
 import ReactDOM from "react-dom";
 import App from "./App";
+import {GlobalStateType} from "./types/types";
 
 export const renderTree = (state: GlobalStateType) => {
     ReactDOM.render(
-        <App/>, document.getElementById('root')
+        <App
+            state={state}
+            addPost={store.addPost.bind(store)}
+            changeNewElement={store.UpdateNewPostText.bind(store)}
+        />
+        , document.getElementById('root')
     );
 }
 
-renderTree(state)
-
-subscribe(renderTree)
+renderTree(store.getState())
+store.subscribe(renderTree)
 

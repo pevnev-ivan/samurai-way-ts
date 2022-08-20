@@ -1,5 +1,4 @@
 // STATE PROFILE PAGE
-import {UpdateNewPostText} from "../redux/state";
 
 export type PostElementType = {
     id: number
@@ -19,6 +18,14 @@ export type ProfileDataType = {
     postData: Array<PostElementType>
 }
 
+// STORE STATE
+export type StoreType = {
+    state: GlobalStateType
+    addPost: () => void
+    UpdateNewPostText: (newElement: string) => void
+    subscribe: any
+    getState: () => GlobalStateType
+}
 // GLOBAL STATE
 export type GlobalStateType = {
     profilePage: ProfileDataType

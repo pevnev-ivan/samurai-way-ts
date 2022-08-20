@@ -22,11 +22,13 @@ const Profile = (props: MyPostsType) => {
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        debugger
         props.changeNewElement(e.currentTarget.value)
     }
 
     const onKeyHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
      if (e.key === 'Enter') {
+         alert('asdas')
          addPost()
      }
     }
