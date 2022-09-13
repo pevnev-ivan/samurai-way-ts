@@ -20,8 +20,9 @@ export type ProfileDataType = {
 
 // STORE STATE
 export type StoreType = {
-    state: GlobalStateType
+    _state: GlobalStateType
     addPost: () => void
+    _callSubscriber: any
     UpdateNewPostText: (newElement: string) => void
     subscribe: any
     getState: () => GlobalStateType
@@ -36,16 +37,15 @@ export type GlobalStateType = {
 export type ProfilePageType = {
     newPostElement: string
     postData: Array<PostElementType>
-    addPost: () => void
-    changeNewElement: (newElement: string) => void
+    dispatch: (action: actionType) => void
 }
 
 // PROFILE/MYposts PAGE
 export type MyPostsType = {
     newPostElement: string
     postData: Array<PostElementType>
-    addPost: () => void
-    changeNewElement: (newElement: string) => void
+    dispatch: (action: actionType) => void
+
 
 }
 // PROFILE//DIALOGS PAGE
@@ -69,6 +69,11 @@ export type MessageDataType = {
 export type MessagesArr = {
     id: number
     message: string
+}
+
+export type actionType = {
+    type: 'ADD-POST' | 'UPDATE-POST',
+    newElement?: string
 }
 
 

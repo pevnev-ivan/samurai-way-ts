@@ -1,7 +1,7 @@
-import {GlobalStateType, StoreType} from "../types/types";
+import {actionType} from "../types/types";
 
-export let store: StoreType = {
-    state: {
+export let store: any = {
+    _state: {
         profilePage:
             {
                 newPostElement: '',
@@ -36,31 +36,45 @@ export let store: StoreType = {
                     ]
             }
     },
-    addPost() {
 
+    _addPost() {
         let newPost = {
             id: 5,
-            message: this.state.profilePage.newPostElement,
+            message: this._state.profilePage.newPostElement,
             likesCount: 0,
             watchCount: 0
         }
+        if (this._state.profilePage.newPostElement) {
+            this._state.profilePage.postData.unshift(newPost)
+            this._state.profilePage.newPostElement = ''
+            this._callSubscriber(this._state)
+        } else {
+        }
+    },
+    _callSubscriber(_state: any) {
+    },
+    _UpdateNewPostText(newElement: string) {
+        this._state.profilePage.newPostElement = newElement
+        this._callSubscriber(this._state)
+    },
 
-        this.state.profilePage.postData.unshift(newPost)
-        this.state.profilePage.newPostElement = ''
-        reRenderTree(this.state)
+    subscribe(observer: any) {
+        this._callSubscriber = observer // observer pattern (similar to publisher-subscriber)
     },
-    UpdateNewPostText(newElement: string) {
-        this.state.profilePage.newPostElement = newElement
-        reRenderTree(this.state)
-    },
-    subscribe(observer: () => void) {
-        reRenderTree = observer // observer pattern (similar to publisher-subscriber)
-    },
+
     getState() {
-        return this.state
+        return this._state
+    },
+    dispatch(action: actionType) {     // action: {type : 'SOME ACTION', ?: 'SOME DATA'}
+        if (action.type === 'ADD-POST') {
+            this._addPost()
+        } else if (action.type === 'UPDATE-POST' && action.newElement) {
+            this._UpdateNewPostText(action.newElement)
+        }
+
     }
+
 }
 
-let reRenderTree = (state: GlobalStateType) => {}
 
 export default store

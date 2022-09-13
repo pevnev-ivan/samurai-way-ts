@@ -8,7 +8,7 @@
 }
 
 .app-wrapper {
-    margin: 0 100px;
+    margin: 0 10vh;
     display: grid;
 
     grid-template-areas:
@@ -29,6 +29,7 @@
     background-color: #F5F6F7;
 
 }
+
 a {
     all: unset;
 }

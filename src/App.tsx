@@ -8,12 +8,11 @@ import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {GlobalStateType, StoreType} from "./types/types";
+import {actionType, GlobalStateType} from "./types/types";
 
 type PropsType = {
     state: GlobalStateType
-    addPost: () => void
-    changeNewElement: (newElement: string) => void
+    dispatch: (action: actionType) => void
 }
 
 function App(props: PropsType) {
@@ -27,10 +26,11 @@ function App(props: PropsType) {
                     <div className={'app-wrapper-content'}>
                         <Route path={'/Profile'} render={() =>
                             <Profile
+                                dispatch={props.dispatch}
+
                                 postData={props.state.profilePage.postData}
-                                addPost={props.addPost}
                                 newPostElement={props.state.profilePage.newPostElement}
-                                changeNewElement={props.changeNewElement}
+
                             />}/>
                         <Route path={'/Dialogs'} render={() =>
                             <Dialogs

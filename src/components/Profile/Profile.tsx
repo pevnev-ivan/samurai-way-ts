@@ -9,9 +9,10 @@ const Profile = (props: ProfilePageType) => {
         <div>
             <ProfileInfo/>
             <MyPosts
+                dispatch={props.dispatch}
+
                 newPostElement={props.newPostElement}
-                postData={props.postData} addPost={props.addPost}
-                changeNewElement={props.changeNewElement}
+                postData={props.postData}
             />
         </div>)
 }

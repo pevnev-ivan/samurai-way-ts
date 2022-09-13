@@ -9,8 +9,7 @@ export const renderTree = (state: GlobalStateType) => {
     ReactDOM.render(
         <App
             state={state}
-            addPost={store.addPost.bind(store)}
-            changeNewElement={store.UpdateNewPostText.bind(store)}
+            dispatch={store.dispatch.bind(store)}
         />
         , document.getElementById('root')
     );

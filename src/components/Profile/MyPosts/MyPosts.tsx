@@ -1,7 +1,6 @@
-import React, {ChangeEvent, KeyboardEvent, RefObject} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-
 import {MyPostsType} from "../../../types/types";
 
 
@@ -17,27 +16,28 @@ const Profile = (props: MyPostsType) => {
 
     let addPost = () => {
         if (newPostElement.current) {
-            props.addPost()
+            props.dispatch({type: 'ADD-POST'})
         }
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        debugger
-        props.changeNewElement(e.currentTarget.value)
+        const newElement = e.currentTarget.value
+        props.dispatch({type: 'UPDATE-POST', newElement: newElement})
     }
 
     const onKeyHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-     if (e.key === 'Enter') {
-         alert('asdas')
-         addPost()
-     }
+        if (e.key === 'Enter') {
+            alert('asdas')
+            addPost()
+        }
     }
 
     return (
         <div className={s.content}>
             <div> My posts
                 <div>
-                    <textarea onKeyDown={onKeyHandler} onChange={onChangeHandler} ref={newPostElement} value={props.newPostElement}></textarea>
+                    <textarea onKeyDown={onKeyHandler} onChange={onChangeHandler} ref={newPostElement}
+                              value={props.newPostElement}></textarea>
                     <button onClick={addPost}>Add post</button>
                 </div>
             </div>
