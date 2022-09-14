@@ -2,10 +2,19 @@ import {actionTypes} from "../types/types";
 
 export const ADD_POST = 'ADD-POST'
 export const UPDATE_POST = 'UPDATE-POST'
+export const SEND_MESSAGE = 'SEND-MESSAGE'
+export const UPDATE_MESSAGE = 'UPDATE-MESSAGE'
+
 
 export const addPostAction = () => ({type: ADD_POST} as const)
+
 export const updatePostAction = (newElement: string) => (
     {type: UPDATE_POST, newElement: newElement} as const)
+
+export const updateMessageAction = (newMessage: string) => (
+    {type: UPDATE_MESSAGE, newMessageElement: newMessage} as const)
+
+export const sendMessageAction = () => ({type: SEND_MESSAGE} as const)
 
 export let store: any = {
     _state: {
@@ -23,6 +32,7 @@ export let store: any = {
 
         dialogsPage:
             {
+                newMessageElement: '',
                 dialogsData:
                     [
                         {id: 1, name: 'Ivan'},
@@ -58,7 +68,20 @@ export let store: any = {
         } else {
         }
     },
-    _callSubscriber(_state: any) {
+    _sendMessage() {
+        let newMessage = {
+            id: 5,
+            message: this._state.dialogsPage.newMessageElement
+        }
+        this._state.dialogsPage.messagesData.unshift(newMessage)
+        this._state.dialogsPage.newMessageElement = ''
+        this._callSubscriber(this._state)
+
+    },
+    _UpdateNewMessageText(newMessage: string) {
+        this._state.dialogsPage.newMessageElement = newMessage
+        this._callSubscriber(this._state)
+
     },
     _UpdateNewPostText(newElement: string) {
         this._state.profilePage.newPostElement = newElement
@@ -67,9 +90,12 @@ export let store: any = {
     subscribe(observer: any) {
         this._callSubscriber = observer // observer pattern (similar to publisher-subscriber)
     },
+    _callSubscriber(_state: any) {
+    },
     getState() {
         return this._state
     },
+
 
     dispatch(action: actionTypes) { // action: {type : 'SOME ACTION', ?: 'SOME DATA'}
         console.log(action.type)
@@ -77,9 +103,11 @@ export let store: any = {
             this._addPost()
         } else if (action.type === UPDATE_POST && action.newElement) {
             this._UpdateNewPostText(action.newElement)
+        } else if (action.type === SEND_MESSAGE) {
+            this._sendMessage()
+        } else if (action.type === UPDATE_MESSAGE && action.newMessageElement) {
+
+            this._UpdateNewMessageText(action.newMessageElement)
         }
     }
 }
-
-
-export default store

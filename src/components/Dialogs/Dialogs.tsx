@@ -2,10 +2,14 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import {DialogsPageType} from "../../types/types";
+import {dialogsArr, MessagesArr} from "../../types/types";
 
-
-
+export type DialogsPageType = {
+    dispatch: any
+    newMessageElement: string
+    dialogsData: Array<dialogsArr>
+    messagesData: Array<MessagesArr>
+}
 
 const Dialogs = (props: DialogsPageType) => {
     return (
@@ -15,7 +19,11 @@ const Dialogs = (props: DialogsPageType) => {
             </div>
 
             <div className={s.messages}>
-                <Message messagesData={props.messagesData}/>
+                <Message
+                    dispatch={props.dispatch}
+
+                    newMessageElement={props.newMessageElement}
+                    messagesData={props.messagesData}/>
             </div>
         </div>
     );

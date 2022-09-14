@@ -34,6 +34,9 @@ function App(props: PropsType) {
                             />}/>
                         <Route path={'/Dialogs'} render={() =>
                             <Dialogs
+                                dispatch={props.dispatch}
+
+                                newMessageElement={props.state.dialogsPage.newMessageElement}
                                 dialogsData={props.state.dialogsPage.dialogsData}
                                 messagesData={props.state.dialogsPage.messagesData}
                             />}/>
