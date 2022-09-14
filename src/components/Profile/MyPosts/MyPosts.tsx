@@ -2,6 +2,7 @@ import React, {ChangeEvent, KeyboardEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {MyPostsType} from "../../../types/types";
+import {addPostAction, updatePostAction} from "../../../redux/state";
 
 
 const Profile = (props: MyPostsType) => {
@@ -15,19 +16,19 @@ const Profile = (props: MyPostsType) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     let addPost = () => {
+
         if (newPostElement.current) {
-            props.dispatch({type: 'ADD-POST'})
+            props.dispatch(addPostAction())
         }
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const newElement = e.currentTarget.value
-        props.dispatch({type: 'UPDATE-POST', newElement: newElement})
+        props.dispatch(updatePostAction(newElement))
     }
 
     const onKeyHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter') {
-            alert('asdas')
             addPost()
         }
     }

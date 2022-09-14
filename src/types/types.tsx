@@ -1,5 +1,7 @@
 // STATE PROFILE PAGE
 
+import {addPostAction, updatePostAction} from "../redux/state";
+
 export type PostElementType = {
     id: number
     message: string
@@ -37,16 +39,14 @@ export type GlobalStateType = {
 export type ProfilePageType = {
     newPostElement: string
     postData: Array<PostElementType>
-    dispatch: (action: actionType) => void
+    dispatch: any
 }
 
 // PROFILE/MYposts PAGE
 export type MyPostsType = {
     newPostElement: string
     postData: Array<PostElementType>
-    dispatch: (action: actionType) => void
-
-
+    dispatch: any
 }
 // PROFILE//DIALOGS PAGE
 export type DialogsPageType = {
@@ -71,10 +71,9 @@ export type MessagesArr = {
     message: string
 }
 
-export type actionType = {
-    type: 'ADD-POST' | 'UPDATE-POST',
-    newElement?: string
-}
+
+export type actionTypes = ReturnType<typeof addPostAction> | ReturnType<typeof updatePostAction>
+
 
 
 

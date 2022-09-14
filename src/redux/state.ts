@@ -1,4 +1,11 @@
-import {actionType} from "../types/types";
+import {actionTypes} from "../types/types";
+
+export const ADD_POST = 'ADD-POST'
+export const UPDATE_POST = 'UPDATE-POST'
+
+export const addPostAction = () => ({type: ADD_POST} as const)
+export const updatePostAction = (newElement: string) => (
+    {type: UPDATE_POST, newElement: newElement} as const)
 
 export let store: any = {
     _state: {
@@ -57,23 +64,21 @@ export let store: any = {
         this._state.profilePage.newPostElement = newElement
         this._callSubscriber(this._state)
     },
-
     subscribe(observer: any) {
         this._callSubscriber = observer // observer pattern (similar to publisher-subscriber)
     },
-
     getState() {
         return this._state
     },
-    dispatch(action: actionType) {     // action: {type : 'SOME ACTION', ?: 'SOME DATA'}
-        if (action.type === 'ADD-POST') {
+
+    dispatch(action: actionTypes) { // action: {type : 'SOME ACTION', ?: 'SOME DATA'}
+        console.log(action.type)
+        if (action.type === ADD_POST) {
             this._addPost()
-        } else if (action.type === 'UPDATE-POST' && action.newElement) {
+        } else if (action.type === UPDATE_POST && action.newElement) {
             this._UpdateNewPostText(action.newElement)
         }
-
     }
-
 }
 
 
