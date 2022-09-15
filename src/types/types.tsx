@@ -1,7 +1,9 @@
 // STATE PROFILE PAGE
 
-import {addPostAction, sendMessageAction, updateMessageAction, updatePostAction} from "../redux/state";
+
 import {DialogsPageType} from "../components/Dialogs/Dialogs";
+import {addPostAction, updatePostAction} from "../redux/profile-reducer";
+import {sendMessageAction, updateMessageAction} from "../redux/dialogs-reducer";
 
 export type PostElementType = {
     id: number
@@ -53,7 +55,9 @@ export type MyPostsType = {
 
 
 export type DialogDataType = {
-    dialogsArr: Array<dialogsArr>
+    newMessageElement: string
+    dialogsData: Array<dialogsArr>
+    messagesData: Array<MessagesArr>
 }
 
 export type dialogsArr = {

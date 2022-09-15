@@ -2,7 +2,7 @@ import React, {ChangeEvent, KeyboardEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {MyPostsType} from "../../../types/types";
-import {addPostAction, updatePostAction} from "../../../redux/state";
+import {addPostAction, updatePostAction} from "../../../redux/profile-reducer";
 
 
 const Profile = (props: MyPostsType) => {

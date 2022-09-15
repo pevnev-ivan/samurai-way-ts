@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import {store} from "./redux/state";
+import {store} from "./redux/store";
 import ReactDOM from "react-dom";
 import App from "./App";
 import {GlobalStateType} from "./types/types";
@@ -16,5 +16,8 @@ export const renderTree = (state: GlobalStateType) => {
 }
 
 renderTree(store.getState())
-store.subscribe(renderTree)
+store.subscribe(() => {
+    let state = store.getState()
+    renderTree(state)
+})
 

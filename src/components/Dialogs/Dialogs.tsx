@@ -15,7 +15,7 @@ const Dialogs = (props: DialogsPageType) => {
     return (
         <div className={s.dialogs__container}>
             <div className={s.dialogs}>
-                <Dialog dialogsArr={props.dialogsData}/>
+                <Dialog dialogsData={props.dialogsData}/>
             </div>
 
             <div className={s.messages}>

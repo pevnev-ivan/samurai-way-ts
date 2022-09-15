@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import {MessagesArr} from "../../../types/types";
-import {sendMessageAction, updateMessageAction} from "../../../redux/state";
+import {sendMessageAction, updateMessageAction} from "../../../redux/dialogs-reducer";
 
 export type MessageDataType = {
     dispatch: any
