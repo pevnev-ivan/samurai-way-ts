@@ -3,11 +3,13 @@ import './index.css';
 import {store} from "./redux/store";
 import ReactDOM from "react-dom";
 import App from "./App";
-import {GlobalStateType} from "./types/types";
+import {GlobalStateType} from "./types/GlobalTypes";
+
 
 export const renderTree = (state: GlobalStateType) => {
     ReactDOM.render(
         <App
+            store={store}
             state={state}
             dispatch={store.dispatch.bind(store)}
         />

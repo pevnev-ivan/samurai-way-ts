@@ -32,7 +32,6 @@ const profileReducer = (state = initialState, action: actionTypes) => {
         }
         case UPDATE_POST: {
             state.newPostElement = action.newElement
-
             return state;
         }
         default:

@@ -1,19 +1,18 @@
 import React from 'react';
-import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ProfilePageType} from "../../types/types";
 
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import {StoreType} from "../../types/GlobalTypes";
 
-const Profile = (props: ProfilePageType) => {
+type ProfileType = {
+    store: StoreType
+}
+
+const Profile = (props: any) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts
-                dispatch={props.dispatch}
-
-                newPostElement={props.newPostElement}
-                postData={props.postData}
-            />
+            <MyPostsContainer store={props.store}/>
         </div>)
 }
 

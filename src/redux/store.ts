@@ -42,12 +42,11 @@ export let store: any = {
     },
 
     subscribe(observer: any) {
-
         this._callSubscriber = observer // observer pattern (similar to publisher-subscriber)
     },
 
     _callSubscriber(_state: any) {
-        console.log('123')
+
     },
 
     getState() {

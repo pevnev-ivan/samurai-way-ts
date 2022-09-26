@@ -1,35 +1,37 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {MyPostsType} from "../../../types/types";
-import {addPostAction, updatePostAction} from "../../../redux/profile-reducer";
+import {PostElementType} from "../../../types/types";
 
+type MyPostsType = {
+    onChangeHandler: (newElement: string) => void
+    onKeyHandler: () => void
+    addPost: () => void
+    postData: Array<PostElementType>
+    newPostElement: string
+}
 
-const Profile = (props: MyPostsType) => {
+const MyPosts = (props: MyPostsType) => {
+
     let postElements = props.postData.map(el =>
-        <Post
-            message={el.message}
-            likesCount={el.likesCount}
-            watchCount={el.watchCount}
-        />)
-
+        <Post message={el.message} likesCount={el.likesCount} watchCount={el.watchCount}/>)
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     let addPost = () => {
-
-        if (newPostElement.current) {
-            props.dispatch(addPostAction())
-        }
+        props.addPost()
+        // if (newPostElement.current) {props.dispatch(addPostAction())}
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        const newElement = e.currentTarget.value
-        props.dispatch(updatePostAction(newElement))
+        // const newElement = e.currentTarget.value
+        // props.dispatch(updatePostAction(newElement))
+        let newElement = e.currentTarget.value
+        props.onChangeHandler(newElement)
     }
 
     const onKeyHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter') {
-            addPost()
+            props.onKeyHandler()
         }
     }
 
@@ -46,4 +48,4 @@ const Profile = (props: MyPostsType) => {
         </div>)
 }
 
-export default Profile
+export default MyPosts
