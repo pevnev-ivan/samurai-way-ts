@@ -30,11 +30,7 @@ function App(props: PropsType) {
                             <Profile store={props.store}/>}/>
                         <Route path={'/Dialogs'} render={() =>
                             <Dialogs
-                                dispatch={props.dispatch}
-
-                                newMessageElement={props.state.dialogsPage.newMessageElement}
-                                dialogsData={props.state.dialogsPage.dialogsData}
-                                messagesData={props.state.dialogsPage.messagesData}
+                                store={props.store}
                             />}/>
                         <Route path={'/News'} render={() => <News/>}/>
                         <Route path={'/Music'} render={() => <Music/>}/>

@@ -1,29 +1,22 @@
 import React from 'react';
 import s from './Dialogs.module.css'
 import Dialog from "./Dialog/Dialog";
-import Message from "./Message/Message";
-import {dialogsArr, MessagesArr} from "../../types/types";
+import {StoreType} from "../../types/GlobalTypes";
+import MessageContainer from "./Message/MessageContainer";
 
 export type DialogsPageType = {
-    dispatch: any
-    newMessageElement: string
-    dialogsData: Array<dialogsArr>
-    messagesData: Array<MessagesArr>
+    store: StoreType
 }
 
-const Dialogs = (props: DialogsPageType) => {
+const Dialogs = (props: any) => {
     return (
         <div className={s.dialogs__container}>
             <div className={s.dialogs}>
-                <Dialog dialogsData={props.dialogsData}/>
+                <Dialog store={props.store}/>
             </div>
 
             <div className={s.messages}>
-                <Message
-                    dispatch={props.dispatch}
-
-                    newMessageElement={props.newMessageElement}
-                    messagesData={props.messagesData}/>
+                <MessageContainer store={props.store}/>
             </div>
         </div>
     );
