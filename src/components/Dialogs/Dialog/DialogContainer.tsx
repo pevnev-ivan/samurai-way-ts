@@ -1,22 +1,21 @@
 import React from 'react';
-import {StoreContext} from "../../../StoreContext";
 import Dialog from "./Dialog";
-
-const DialogContainer = () => {
-
-
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-                let state = store.getState()
-                return (
-                    <Dialog state={state.dialogsPage}/>
-                )
-            }}
+import {connect} from "react-redux";
+import {GlobalStateType} from "../../../types/GlobalTypes";
 
 
-        </StoreContext.Consumer>
-    );
-};
+let mapStateToProps = (state: GlobalStateType) => {
+    return {
+        dialogsPage: state.dialogsPage
+    }
+}
+
+// let mapDispatchToProps = (dispatch: (action: actionTypes) => void) => {
+//     return {
+//
+//     }
+// }
+
+const DialogContainer = connect(mapStateToProps)(Dialog)
 
 export default DialogContainer;
