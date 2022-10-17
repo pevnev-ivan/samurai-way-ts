@@ -3,35 +3,43 @@ import React from 'react';
 import {addPostAction, updatePostAction} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import {StoreType} from "../../../types/GlobalTypes";
+import {StoreContext} from "../../../StoreContext"
 
 type MyPostsContainerType = {
     store: StoreType
 }
 
-const MyPostsContainer = (props: MyPostsContainerType) => {
-    let state = props.store.getState()
-    let addPost = () => {
-        props.store.dispatch(addPostAction())
-    }
+const MyPostsContainer = () => {
+    return (<StoreContext.Consumer>
+        {(store) => {
 
-    const onChangeHandler = (newElement: string) => {
-        props.store.dispatch(updatePostAction(newElement))
-    }
+            let state = store.getState()
+           
+            let addPost = () => {
+                store.dispatch(addPostAction())
+            }
 
-    const onKeyHandler = () => {
+            const onChangeHandler = (newElement: string) => {
+                store.dispatch(updatePostAction(newElement))
+            }
 
-        addPost()
-    }
+            const onKeyHandler = () => {
+                addPost()
+            }
 
-    return (<MyPosts
-            onChangeHandler={onChangeHandler}
-            onKeyHandler={onKeyHandler}
-            addPost={addPost}
-            postData={state.profilePage.postData}
-            newPostElement={state.profilePage.newPostElement}
-        />
+            return (<MyPosts
+                    onChangeHandler={onChangeHandler}
+                    onKeyHandler={onKeyHandler}
+                    addPost={addPost}
+                    postData={state.profilePage.postData}
+                    newPostElement={state.profilePage.newPostElement}
+                />
 
-    )
+            )
+        }}
+
+
+    </StoreContext.Consumer>)
 }
 
 export default MyPostsContainer

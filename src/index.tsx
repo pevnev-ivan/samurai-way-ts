@@ -4,15 +4,14 @@ import {store} from "./redux/store";
 import ReactDOM from "react-dom";
 import App from "./App";
 import {GlobalStateType} from "./types/GlobalTypes";
+import {Provider} from "./StoreContext";
 
 
 export const renderTree = (state: GlobalStateType) => {
     ReactDOM.render(
-        <App
-            store={store}
-            state={state}
-            dispatch={store.dispatch.bind(store)}
-        />
+        <Provider store={store}>
+            <App/>
+        </Provider>
         , document.getElementById('root')
     );
 }

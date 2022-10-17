@@ -17,7 +17,7 @@ type PropsType = {
     store: StoreType
 }
 
-function App(props: PropsType) {
+function App() {
     return (
         <>
             <BrowserRouter>
@@ -27,11 +27,9 @@ function App(props: PropsType) {
 
                     <div className={'app-wrapper-content'}>
                         <Route path={'/Profile'} render={() =>
-                            <Profile store={props.store}/>}/>
+                            <Profile/>}/>
                         <Route path={'/Dialogs'} render={() =>
-                            <Dialogs
-                                store={props.store}
-                            />}/>
+                            <Dialogs/>}/>
                         <Route path={'/News'} render={() => <News/>}/>
                         <Route path={'/Music'} render={() => <Music/>}/>
                         <Route path={'/Settings'} render={() => <Settings/>}/>
