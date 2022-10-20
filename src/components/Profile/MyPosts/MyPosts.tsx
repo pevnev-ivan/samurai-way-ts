@@ -1,17 +1,16 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {PostElementType} from "../../../types/types";
+import {MyPostsPropsType} from "./MyPostsContainer";
 
-type MyPostsType = {
-    onChangeHandler: (newElement: string) => void
-    onKeyHandler: () => void
-    addPost: () => void
-    postData: Array<PostElementType>
-    newPostElement: string
+export type PostElementType = {
+    id: number
+    message: string
+    likesCount: number
+    watchCount: number
 }
-
-const MyPosts = (props: MyPostsType) => {
+ 
+const MyPosts = (props: MyPostsPropsType) => {
 
     let postElements = props.postData.map((el, index) =>
         <Post key={index} message={el.message} likesCount={el.likesCount} watchCount={el.watchCount}/>)

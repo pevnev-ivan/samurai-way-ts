@@ -1,14 +1,18 @@
 import React from 'react';
 import s from "../../Profile.module.css";
-import {PostType} from "../../../../types/types";
 
 
+export type PostType = {
+    message: string;
+    likesCount: number;
+    watchCount: number;
+}
 
 const Post = (props: PostType) => {
     return <div className={s.item}>
 
-            <div className={s.postHeader}>
-                <div className={s.post__test}>
+        <div className={s.postHeader}>
+            <div className={s.post__test}>
                 <img className={s.avatar}
                      src="https://i.pinimg.com/originals/57/5c/bc/575cbc223378eff049d151e30839f2af.jpg"
                      alt="avatar"/>
@@ -16,7 +20,7 @@ const Post = (props: PostType) => {
                     <span className={s.profileName}>Pevnev Ivan</span> <br/>
                     <span className={s.post__time}>15h. ago</span>
                 </div>
-                </div>
+            </div>
             <div>
                 <button className={s.post__option}>oprtions</button>
             </div>

@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from 'react';
-import {MessagesArr} from "../../../types/types";
+import {MessagesArr} from "../../../redux/dialogs-reducer";
 
 export type MessageDataType = {
     sendMessage: () => void
@@ -20,7 +20,7 @@ const Message = (props: MessageDataType) => {
         let newMessage = e.currentTarget.value
         props.onChangeMessageText(newMessage)
     }
-    
+
     let messageElements = props.messagesData.map((ObjFromMessageData, index) => {
         return (
             <div

@@ -1,23 +1,32 @@
 import React from 'react';
 
 import {addPostAction, updatePostAction} from "../../../redux/profile-reducer";
-import {GlobalStateType, StoreType} from "../../../types/GlobalTypes";
 import {connect} from "react-redux";
-import Dialog from "../../Dialogs/Dialog/Dialog";
-import {actionTypes} from "../../../types/types";
+import MyPosts, {PostElementType} from "./MyPosts";
+import {Dispatch} from "redux";
+import {GlobalStateType} from "../../../types/GlobalTypes";
 
-type MyPostsContainerType = {
-    store: StoreType
+type mapStatePropsType = {
+    newPostElement: string
+    postData: Array<PostElementType>
 }
 
-let mapStateToProps = (state: GlobalStateType) => {
+type mapDispatchToPropsType = {
+    addPost: () => void
+    onKeyHandler: () => void
+    onChangeHandler: (newElement: string) => void
+}
+
+let mapStateToProps = (state: GlobalStateType): mapStatePropsType => {
     return {
         postData: state.profilePage.postData,
         newPostElement: state.profilePage.newPostElement
     }
 }
 
-let mapDispatchToProps = (dispatch: (action: actionTypes) => void) => {
+export type MyPostsPropsType = mapStatePropsType & mapDispatchToPropsType
+
+let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
         addPost: () => {
             dispatch(addPostAction())
@@ -31,6 +40,6 @@ let mapDispatchToProps = (dispatch: (action: actionTypes) => void) => {
     }
 }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialog)
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
 
 export default MyPostsContainer

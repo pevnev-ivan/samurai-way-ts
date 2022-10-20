@@ -3,8 +3,8 @@ import './index.css';
 import {store} from "./redux/store";
 import ReactDOM from "react-dom";
 import App from "./App";
+import {Provider} from "react-redux";
 import {GlobalStateType} from "./types/GlobalTypes";
-import {Provider} from "./StoreContext";
 
 
 export const renderTree = (state: GlobalStateType) => {
@@ -17,8 +17,11 @@ export const renderTree = (state: GlobalStateType) => {
 }
 
 renderTree(store.getState())
+
 store.subscribe(() => {
     let state = store.getState()
     renderTree(state)
 })
+
+
 

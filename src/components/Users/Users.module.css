@@ -1,0 +1,53 @@
+.userAvatar {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.usersContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.userContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.userLeftSide {
+    display: flex;
+    flex-direction: column;
+}
+
+.userRightSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border: solid black 1px;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 10px;
+    min-width: 300px;
+}
+
+.userInfo {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.followButton {
+    cursor: pointer;
+    border: none;
+    background-color: #4E5D78;
+    height: 25px;
+    color: whitesmoke;
+    border-radius: 20px;
+}
+
+.unfollowButton {
+    background-color: whitesmoke;
+    color: #4E5D78;
+}

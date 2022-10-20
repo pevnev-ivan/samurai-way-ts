@@ -1,37 +1,29 @@
 import React from 'react';
 import {sendMessageAction, updateMessageAction} from "../../../redux/dialogs-reducer";
 import Message from "./Message";
-import {StoreContext} from "../../../StoreContext"
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
+import {GlobalStateType} from "../../../types/GlobalTypes";
 
 
-// export type MessageDataType = {}
-
-const MessageContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-                let state = store.getState()
-
-                const sendMessage = () => {
-                    store.dispatch(sendMessageAction())
-                }
-
-                const onChangeMessageText = (newMessage: string) => {
-                    store.dispatch(updateMessageAction(newMessage))
-                }
-
-                return (<Message
-                    sendMessage={sendMessage}
-                    onChangeMessageText={onChangeMessageText}
-                    messagesData={state.dialogsPage.messagesData}
-                    newMessageElement={state.dialogsPage.newMessageElement}
-                />)
-            }}
-
-
-        </StoreContext.Consumer>
-
-    )
+let mapStateToProps = (state: GlobalStateType) => {
+    return {
+        newMessageElement: state.dialogsPage.newMessageElement,
+        messagesData: state.dialogsPage.messagesData
+    }
 }
+
+let mapDispatchToProps = (dispatch: Dispatch) => {
+    return {
+        sendMessage: () => {
+            dispatch(sendMessageAction())
+        },
+        onChangeMessageText: (newMessage: string) => {
+            dispatch(updateMessageAction(newMessage))
+        }
+    }
+}
+
+const MessageContainer = connect(mapStateToProps, mapDispatchToProps)(Message)
 
 export default MessageContainer;

@@ -1,9 +1,11 @@
-import {actionTypes, ProfileDataType} from "./types";
-import {DialogsPageType} from "../components/Dialogs/Dialogs";
+import {actionTypes} from "./types";
+import {ProfilePageType} from "../redux/profile-reducer";
+import {DialogDataType} from "../redux/dialogs-reducer";
+import {UsersPageType} from "../components/Users/UsersContainer";
+
 
 export type StoreType = {
     _state: GlobalStateType
-
     subscribe: any
     _callSubscriber: any
     getState: () => GlobalStateType
@@ -11,6 +13,7 @@ export type StoreType = {
 }
 
 export type GlobalStateType = {
-    profilePage: ProfileDataType
-    dialogsPage: DialogsPageType
+    profilePage: ProfilePageType
+    dialogsPage: DialogDataType
+    usersPage: UsersPageType
 }

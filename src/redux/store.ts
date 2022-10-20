@@ -1,6 +1,8 @@
 import {actionTypes} from "../types/types";
-import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
+import {GlobalStateType} from "../types/GlobalTypes";
+import userReducer from "./users-reducer";
 
 
 export let store: any = {
@@ -38,6 +40,26 @@ export let store: any = {
                         {id: 3, message: 'Sup'},
                         {id: 4, message: 'Test'}
                     ]
+            },
+        usersPage:
+            {
+                users: [
+                    {
+                        id: 1,
+                        followed: true,
+                        avatarUrl: 'https://thumbs.dreamstime.com/b/male-avatar-icon-flat-style-male-user-icon-cartoon-man-avatar-hipster-vector-stock-91462914.jpg',
+                        fullName: 'John',
+                        status: 'Hello World',
+                        location: {city: 'Kiev', country: 'Ukraine'}
+                    },
+                    {
+                        id: 2,
+                        followed: false,
+                        avatarUrl: 'https://thumbs.dreamstime.com/b/male-avatar-icon-flat-style-male-user-icon-cartoon-man-avatar-hipster-vector-stock-91462914.jpg',
+                        fullName: 'Alfred',
+                        status: 'Hello World',
+                        location: {city: 'Moscow', country: 'Russia'}
+                    }]
             }
     },
 
@@ -45,7 +67,7 @@ export let store: any = {
         this._callSubscriber = observer // observer pattern (similar to publisher-subscriber)
     },
 
-    _callSubscriber(_state: any) {
+    _callSubscriber(_state: GlobalStateType) {
 
     },
 
@@ -54,9 +76,13 @@ export let store: any = {
     },
 
 
-    dispatch(action: actionTypes) { // action: {type : 'SOME ACTION', ?: 'SOME DATA'}
+    dispatch(action: actionTypes) {
         store._state.profilePage = profileReducer(store._state.profilePage, action)
         store._state.dialogsPage = dialogsReducer(store._state.dialogsPage, action)
+        store._state.usersPage = userReducer(store._state.usersPage, action)
+
+        console.log(store._state.usersPage.users)
+
         this._callSubscriber(this._state)
     }
 }
